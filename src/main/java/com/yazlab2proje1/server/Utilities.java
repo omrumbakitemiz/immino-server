@@ -7,11 +7,21 @@ import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Utilities {
 
-    public List<Trajectory> GetLatLong() throws Exception {
-        File file = new File("/Users/immino/20081023025304.plt");
+    public List<Trajectory> GetRandomLatLong() throws Exception {
+
+        String path = "/Users/immino/Downloads/yazlab2proje1/Geolife Trajectories 1.3/Data/000/Trajectory/";
+        File directory = new File(path);
+
+        File[] files = directory.listFiles();
+
+        Random random = new Random();
+
+        File file = files[random.nextInt(files.length)];
+
         BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
 
         List<String> trajectoryList = new ArrayList<>();
