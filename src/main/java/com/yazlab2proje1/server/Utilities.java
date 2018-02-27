@@ -13,16 +13,18 @@ public class Utilities {
 
     public List<Trajectory> GetRandomLatLong() throws Exception {
 
-        String path = "/Users/immino/Downloads/yazlab2proje1/Geolife Trajectories 1.3/Data/000/Trajectory/";
+        String workingDir = System.getProperty("user.dir");
+        String path = workingDir + "/20081023025304.plt";
+
         File directory = new File(path);
 
-        File[] files = directory.listFiles();
+        //File[] files = directory.listFiles();
 
-        Random random = new Random();
+        //Random random = new Random();
 
-        File file = files[random.nextInt(files.length)];
+        //File file = files[random.nextInt(files.length)];
 
-        BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
+        BufferedReader bufferedReader = new BufferedReader(new FileReader(directory));
 
         List<String> trajectoryList = new ArrayList<>();
 
