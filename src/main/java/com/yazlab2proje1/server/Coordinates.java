@@ -22,7 +22,7 @@ public class Coordinates {
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
-        System.out.println("data sended from random: " + LocalDateTime.now().format(formatter));
+        // System.out.println("data sended from random: " + LocalDateTime.now().format(formatter));
 
         return result;
     }
