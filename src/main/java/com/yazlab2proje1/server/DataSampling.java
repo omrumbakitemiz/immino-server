@@ -11,7 +11,7 @@ import java.util.List;
 public class DataSampling {
 
     @CrossOrigin
-    @RequestMapping(value = "/getReducedData", method = RequestMethod.POST,
+    @RequestMapping(value = "/", method = RequestMethod.POST,
             consumes = "application/json", produces = "application/json")
     public ResponseEntity<List<Trajectory>> GetReducedData(@RequestBody List<Trajectory> coordinates) {
 
