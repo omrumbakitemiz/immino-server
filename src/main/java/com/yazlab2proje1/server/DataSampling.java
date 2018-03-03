@@ -11,13 +11,18 @@ import java.util.List;
 public class DataSampling {
 
     @CrossOrigin
-    @RequestMapping(value = "/", method = RequestMethod.POST,
+    @RequestMapping(value = "/simplify", method = RequestMethod.POST,
             consumes = "application/json", produces = "application/json")
     public ResponseEntity<List<Trajectory>> GetReducedData(@RequestBody List<Trajectory> coordinates) {
 
         List<Trajectory> response = new ArrayList<>();
 
-        for (int i = 0; i < coordinates.size()/10; i++){
+        int lengt = 1;
+        if(coordinates.size() / 10 > 1) {
+            lengt = coordinates.size() / 10;
+        }
+
+        for (int i = 0; i < lengt; i++){
             response.add(coordinates.get(i));
         }
 

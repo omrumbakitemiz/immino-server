@@ -13,7 +13,7 @@ import java.util.List;
 public class Coordinates {
 
     @CrossOrigin
-    @RequestMapping("/getRandomCoordinates")
+    @RequestMapping("/")
     public List<Trajectory> GetRandomLatLong() throws Exception {
         Utilities utilities = new Utilities();
         List<Trajectory> result = utilities.GetRandomLatLong();
