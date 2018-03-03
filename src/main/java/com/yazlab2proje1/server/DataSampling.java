@@ -9,7 +9,9 @@ import java.util.List;
 @RestController
 public class DataSampling {
 
-    @RequestMapping(value = "/getReducedData", method = RequestMethod.POST)
+    @CrossOrigin
+    @RequestMapping(value = "/getReducedData", method = RequestMethod.POST,
+            consumes = "application/json", produces = "application/json")
     public ResponseEntity<String> GetReducedData(@RequestBody List<Trajectory> coordinates) {
 
         System.out.println("Latitude: " + coordinates.get(0).Latitude + "\n");

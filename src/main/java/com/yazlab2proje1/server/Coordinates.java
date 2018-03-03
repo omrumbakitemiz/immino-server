@@ -12,6 +12,7 @@ import java.util.List;
 @RestController
 public class Coordinates {
 
+    @CrossOrigin
     @RequestMapping("/getRandomCoordinates")
     public List<Trajectory> GetRandomLatLong() throws Exception {
         Utilities utilities = new Utilities();
