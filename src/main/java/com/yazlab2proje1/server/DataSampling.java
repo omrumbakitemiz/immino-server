@@ -4,6 +4,7 @@ import Models.Trajectory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -12,12 +13,13 @@ public class DataSampling {
     @CrossOrigin
     @RequestMapping(value = "/getReducedData", method = RequestMethod.POST,
             consumes = "application/json", produces = "application/json")
-    public ResponseEntity<String> GetReducedData(@RequestBody List<Trajectory> coordinates) {
+    public ResponseEntity<List<Trajectory>> GetReducedData(@RequestBody List<Trajectory> coordinates) {
 
-        System.out.println("Latitude: " + coordinates.get(0).Latitude + "\n");
-        System.out.println("Longitude: " + coordinates.get(0).Longitude);
+        List<Trajectory> response = new ArrayList<>();
 
-        String response = (coordinates.get(0).Latitude.toString() + " " + coordinates.get(0).Longitude.toString());
+        for (int i = 0; i < coordinates.size()/10; i++){
+            response.add(coordinates.get(i));
+        }
 
         return ResponseEntity.ok(response);
     }
