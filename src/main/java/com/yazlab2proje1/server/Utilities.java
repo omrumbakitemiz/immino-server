@@ -48,8 +48,8 @@ public class Utilities {
 
             Trajectory trajectoryData = new Trajectory();
 
-            trajectoryData.Latitude = Double.parseDouble(coordinates[0]);
-            trajectoryData.Longitude = Double.parseDouble(coordinates[1]);
+            trajectoryData.lat = Double.parseDouble(coordinates[0]);
+            trajectoryData.lng = Double.parseDouble(coordinates[1]);
 
             coordinateList.add(trajectoryData);
         }

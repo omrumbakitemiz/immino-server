@@ -2,6 +2,6 @@ package Models;
 
 public class Trajectory {
 
-    public Double Latitude;
-    public Double Longitude;
+    public Double lat;
+    public Double lng;
 }
