@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.ArrayList;
 
 @RestController
 public class Coordinates {
@@ -15,13 +16,13 @@ public class Coordinates {
     @CrossOrigin
     @RequestMapping("/")
     public List<Trajectory> GetRandomLatLong() throws Exception {
-        Utilities utilities = new Utilities();
-        List<Trajectory> result = utilities.GetRandomLatLong();
+        // Utilities utilities = new Utilities();
+        // List<Trajectory> result = utilities.GetRandomLatLong();
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
         System.out.println("data sended from random: " + LocalDateTime.now().format(formatter));
 
-        return result;
+        return new ArrayList<>();
     }
 }
