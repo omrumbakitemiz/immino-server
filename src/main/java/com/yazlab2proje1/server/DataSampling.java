@@ -17,13 +17,15 @@ public class DataSampling {
 
         List<Trajectory> response = new ArrayList<>();
 
-        int lengt = 1;
-        if(coordinates.size() / 10 > 1) {
-            lengt = coordinates.size() / 10;
-        }
+        // int length = 1;
+        // if(coordinates.size() / 10 > 1) {
+        //     length = coordinates.size() / 10;
+        // }
 
-        for (int i = 0; i < lengt; i++){
-            response.add(coordinates.get(i));
+        for (int i = 0; i < coordinates.size(); i++){
+            if(i % 10 == 0) {
+                response.add(coordinates.get(i));
+            }
         }
 
         return ResponseEntity.ok(response);

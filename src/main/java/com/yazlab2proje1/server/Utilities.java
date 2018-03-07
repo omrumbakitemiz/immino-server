@@ -7,14 +7,13 @@ import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class Utilities {
 
     public List<Trajectory> GetRandomLatLong() throws Exception {
 
         String workingDir = System.getProperty("user.dir");
-        String path = workingDir + "/20081023025304.plt";
+        String path = workingDir + "/file2.plt";
 
         File directory = new File(path);
 
@@ -38,6 +37,8 @@ public class Utilities {
             }
             counter++;
         }
+
+        bufferedReader.close();
 
         List<Trajectory> coordinateList = new ArrayList<>();
 
