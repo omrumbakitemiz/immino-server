@@ -25,5 +25,5 @@ nbdist/
 .nb-gradle/
 
 .vscode/
-
+.settings/
 *.plt
