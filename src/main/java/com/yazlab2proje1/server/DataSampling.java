@@ -1,6 +1,6 @@
 package com.yazlab2proje1.server;
 
-import Models.Trajectory;
+import models.Trajectory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

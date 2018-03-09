@@ -1,6 +1,6 @@
 package com.yazlab2proje1.server;
 
-import Models.Trajectory;
+import models.Trajectory;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -22,24 +22,21 @@ public class Utilities {
         //Random random = new Random();
 
         //File file = files[random.nextInt(files.length)];
-
-        BufferedReader bufferedReader = new BufferedReader(new FileReader(directory));
-
         List<String> trajectoryList = new ArrayList<>();
 
-        String data;
-        int counter = 1;
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(directory))) {
+            String data;
+            int counter = 1;
 
-        while((data = bufferedReader.readLine()) != null) {
-            // 7. satırdan sonra kaydetmeye başla
-            if(counter >= 7) {
-                trajectoryList.add(data);
+            while((data = bufferedReader.readLine()) != null) {
+                // 7. satırdan sonra kaydetmeye başla
+                if(counter >= 7) {
+                    trajectoryList.add(data);
+                }
+                counter++;
             }
-            counter++;
         }
-
-        bufferedReader.close();
-
+        
         List<Trajectory> coordinateList = new ArrayList<>();
 
         for(int i = 0; i < trajectoryList.size(); i++) {
@@ -49,8 +46,8 @@ public class Utilities {
 
             Trajectory trajectoryData = new Trajectory();
 
-            trajectoryData.lat = Double.parseDouble(coordinates[0]);
-            trajectoryData.lng = Double.parseDouble(coordinates[1]);
+            trajectoryData.setLat(Double.parseDouble(coordinates[0]));
+            trajectoryData.setLng(Double.parseDouble(coordinates[1]));
 
             coordinateList.add(trajectoryData);
         }
