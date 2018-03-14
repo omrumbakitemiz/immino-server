@@ -14,7 +14,7 @@ public class Line<P extends Point> {
     private double exsy;
     private  double length;
     
-    public Line(P start, P end) {
+    Line(P start, P end) {
         this.start = start;
         this.end = end;
         dx = start.getLat() - end.getLat();
@@ -24,7 +24,7 @@ public class Line<P extends Point> {
         length = Math.sqrt(dx*dx + dy*dy);
     }
     
-    @SuppressWarnings("unchecked")
+    // @SuppressWarnings("unchecked")
     public List<P> asList() {
         return Arrays.asList(start, end);
     }
