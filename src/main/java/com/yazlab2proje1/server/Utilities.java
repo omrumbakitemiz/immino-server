@@ -13,7 +13,7 @@ public class Utilities {
     public List<Trajectory> GetRandomLatLong() throws Exception {
 
         String workingDir = System.getProperty("user.dir");
-        String path = workingDir + "/file2.plt";
+        String path = workingDir + "/dataset.txt";
 
         File directory = new File(path);
 
@@ -26,15 +26,19 @@ public class Utilities {
 
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(directory))) {
             String data;
-            int counter = 1;
 
             while((data = bufferedReader.readLine()) != null) {
-                // 7. satırdan sonra kaydetmeye başla
-                if(counter >= 7) {
-                    trajectoryList.add(data);
-                }
-                counter++;
+                trajectoryList.add(data);
             }
+//            int counter = 1;
+//
+//            while((data = bufferedReader.readLine()) != null) {
+//                // 7. satırdan sonra kaydetmeye başla
+//                if(counter >= 7) {
+//                    trajectoryList.add(data);
+//                }
+//                counter++;
+//            }
         }
         
         List<Trajectory> coordinateList = new ArrayList<>();

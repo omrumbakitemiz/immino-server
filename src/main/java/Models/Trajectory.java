@@ -3,19 +3,18 @@ package models;
 public class Trajectory {
 
     private Double lat;
+    private Double lng;
 
     public Double getLat() {
-        return this.lat;
+        return lat;
     }
 
     public void setLat(Double lat) {
         this.lat = lat;
     }
 
-    private Double lng;
-
     public Double getLng() {
-        return this.lng;
+        return lng;
     }
 
     public void setLng(Double lng) {
