@@ -38,10 +38,6 @@ public class DataSampling {
 
         List<Point> points = new ArrayList<>();
 
-//        for (double x = 0; x < 4; x += 0.05) {
-//            points.add(new Coordinate(x, Math.cos(x*x - 1)));
-//        }
-
         for (Trajectory coordinate : coordinates) {
             Double lat = coordinate.getLat();
             Double lng = coordinate.getLng();
