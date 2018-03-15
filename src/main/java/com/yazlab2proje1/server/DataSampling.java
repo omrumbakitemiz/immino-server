@@ -2,6 +2,8 @@ package com.yazlab2proje1.server;
 
 import models.Coordinate;
 import models.Trajectory;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import utils.seriesreducer.Point;
@@ -9,7 +11,6 @@ import utils.seriesreducer.SeriesReducer;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 public class DataSampling {
@@ -30,13 +31,19 @@ public class DataSampling {
         return ResponseEntity.ok(response);
     }
 
-    @CrossOrigin
+    @CrossOrigin(exposedHeaders = "reduceTime")
     @RequestMapping(value = "/ramer", method = RequestMethod.POST,
             consumes = "application/json", produces = "application/json")
     public ResponseEntity<List<Point>> getSimplifiedData(
-            @RequestBody List<Trajectory> coordinates, @RequestParam("epsilon") Double epsilon) {
+            @RequestBody List<Trajectory> coordinates,
+            @RequestParam("epsilon") Double epsilon) {
 
         List<Point> points = new ArrayList<>();
+        HttpHeaders headers = new HttpHeaders();
+
+        long startTime;
+        long endTime;
+        long duration;
 
         for (Trajectory coordinate : coordinates) {
             Double lat = coordinate.getLat();
@@ -45,8 +52,17 @@ public class DataSampling {
             points.add(new Coordinate(lat, lng));
         }
 
+        startTime = System.nanoTime();
+
         List<Point> reduced = SeriesReducer.reduce(points, epsilon);
 
-        return ResponseEntity.ok(reduced);
+        endTime = System.nanoTime();
+
+        duration = (endTime - startTime); //divide by 1000000 to get milliseconds
+
+        headers.add("reduceTime", String.valueOf(duration));
+        headers.getAccessControlExposeHeaders();
+
+        return new ResponseEntity<>(reduced, headers, HttpStatus.OK);
     }
 }

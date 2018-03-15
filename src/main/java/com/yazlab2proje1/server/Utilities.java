@@ -2,26 +2,19 @@ package com.yazlab2proje1.server;
 
 import models.Trajectory;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Utilities {
 
-    public List<Trajectory> GetRandomLatLong() throws Exception {
+    public List<Trajectory> getRandomLatLong() throws IOException {
 
         String workingDir = System.getProperty("user.dir");
         String path = workingDir + "/dataset.txt";
 
         File directory = new File(path);
 
-        //File[] files = directory.listFiles();
-
-        //Random random = new Random();
-
-        //File file = files[random.nextInt(files.length)];
         List<String> trajectoryList = new ArrayList<>();
 
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(directory))) {
@@ -30,17 +23,8 @@ public class Utilities {
             while((data = bufferedReader.readLine()) != null) {
                 trajectoryList.add(data);
             }
-//            int counter = 1;
-//
-//            while((data = bufferedReader.readLine()) != null) {
-//                // 7. satırdan sonra kaydetmeye başla
-//                if(counter >= 7) {
-//                    trajectoryList.add(data);
-//                }
-//                counter++;
-//            }
         }
-        
+
         List<Trajectory> coordinateList = new ArrayList<>();
 
         for(int i = 0; i < trajectoryList.size(); i++) {

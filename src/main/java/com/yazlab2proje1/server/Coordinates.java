@@ -16,7 +16,7 @@ public class Coordinates {
     @RequestMapping("/")
     public List<Trajectory> GetRandomLatLong() throws Exception {
         Utilities utilities = new Utilities();
-        List<Trajectory> result = utilities.GetRandomLatLong();
+        List<Trajectory> result = utilities.getRandomLatLong();
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
