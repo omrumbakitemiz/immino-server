@@ -1,6 +1,7 @@
-package com.yazlab2proje1.server;
+package io.imminoserver.controllers;
 
-import models.Trajectory;
+import io.imminoserver.models.Trajectory;
+import io.imminoserver.utils.Utilities;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -10,7 +11,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @RestController
-public class Coordinates {
+public class CoordinateController {
 
     @CrossOrigin
     @RequestMapping("/")

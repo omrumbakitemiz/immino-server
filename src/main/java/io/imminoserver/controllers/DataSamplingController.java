@@ -1,19 +1,19 @@
-package com.yazlab2proje1.server;
+package io.imminoserver.controllers;
 
-import models.Coordinate;
-import models.Trajectory;
+import io.imminoserver.models.Coordinate;
+import io.imminoserver.models.Trajectory;
+import io.imminoserver.utils.seriesreducer.Point;
+import io.imminoserver.utils.seriesreducer.SeriesReducer;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import utils.seriesreducer.Point;
-import utils.seriesreducer.SeriesReducer;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-public class DataSampling {
+public class DataSamplingController {
 
     @CrossOrigin
     @RequestMapping(value = "/simplify", method = RequestMethod.POST,
@@ -22,8 +22,8 @@ public class DataSampling {
 
         List<Trajectory> response = new ArrayList<>();
 
-        for (int i = 0; i < coordinates.size(); i++){
-            if(i % 10 == 0) {
+        for (int i = 0; i < coordinates.size(); i++) {
+            if (i % 10 == 0) {
                 response.add(coordinates.get(i));
             }
         }

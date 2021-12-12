@@ -1,4 +1,4 @@
-package models;
+package io.imminoserver.models;
 
 public class Trajectory {
 

@@ -1,6 +1,6 @@
-package com.yazlab2proje1.server;
+package io.imminoserver.controllers;
 
-import models.Trajectory;
+import io.imminoserver.models.Trajectory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-public class SearchPoint {
+public class SearchPointController {
 
     @CrossOrigin
     @RequestMapping(value = "/search", method = RequestMethod.POST)
@@ -25,7 +25,7 @@ public class SearchPoint {
         // lng sınırları nwlng - selng
         // ltd sınırları nwlat - selat
 
-        for(Trajectory coordinate : allCoordinates) {
+        for (Trajectory coordinate : allCoordinates) {
             boolean inside = false;
 
             // AĞLAMAK İSTİYORUM BU NASIL KOD
@@ -42,16 +42,16 @@ public class SearchPoint {
             Double minLng = nwLng;
             Double maxLng = seLng;
 
-            if(nwLat > seLat) {
+            if (nwLat > seLat) {
                 maxLat = nwLat;
                 minLat = seLat;
             }
-            if(nwLng > seLng) {
+            if (nwLng > seLng) {
                 maxLng = nwLng;
                 minLng = seLng;
             }
 
-            if(lng >= minLng && lng <= maxLng && lat >= minLat && lat <= maxLat) {
+            if (lng >= minLng && lng <= maxLng && lat >= minLat && lat <= maxLat) {
                 inside = true;
             }
 

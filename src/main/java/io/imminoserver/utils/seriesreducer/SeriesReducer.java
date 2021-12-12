@@ -1,4 +1,4 @@
-package utils.seriesreducer;
+package io.imminoserver.utils.seriesreducer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,28 +12,27 @@ public class SeriesReducer {
         double furthestPointDistance = 0.0;
         int furthestPointIndex = 0;
 
-        Line<P> line = new Line<P>(points.get(0), points.get(points.size() - 1));
+        Line<P> line = new Line<>(points.get(0), points.get(points.size() - 1));
 
         for (int i = 1; i < points.size() - 1; i++) {
             double distance = line.distance(points.get(i));
-            if (distance > furthestPointDistance ) {
+            if (distance > furthestPointDistance) {
                 furthestPointDistance = distance;
                 furthestPointIndex = i;
             }
         }
 
         if (furthestPointDistance > epsilon) {
-            List<P> reduced1 = reduce(points.subList(0, furthestPointIndex+1), epsilon);
+            List<P> reduced1 = reduce(points.subList(0, furthestPointIndex + 1), epsilon);
             List<P> reduced2 = reduce(points.subList(furthestPointIndex, points.size()), epsilon);
             List<P> result = new ArrayList<P>(reduced1);
 
             result.addAll(reduced2.subList(1, reduced2.size()));
 
             return result;
-        }
-        else {
+        } else {
             return line.asList();
         }
     }
-    
+
 }

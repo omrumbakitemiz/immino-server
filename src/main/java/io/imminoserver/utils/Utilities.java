@@ -1,8 +1,11 @@
-package com.yazlab2proje1.server;
+package io.imminoserver.utils;
 
-import models.Trajectory;
+import io.imminoserver.models.Trajectory;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,14 +23,14 @@ public class Utilities {
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(directory))) {
             String data;
 
-            while((data = bufferedReader.readLine()) != null) {
+            while ((data = bufferedReader.readLine()) != null) {
                 trajectoryList.add(data);
             }
         }
 
         List<Trajectory> coordinateList = new ArrayList<>();
 
-        for(int i = 0; i < trajectoryList.size(); i++) {
+        for (int i = 0; i < trajectoryList.size(); i++) {
             String tempData = trajectoryList.get(i);
 
             String[] coordinates = tempData.split(",");
